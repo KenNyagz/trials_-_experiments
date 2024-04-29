@@ -9,7 +9,7 @@ int main()
     printf("%p\n", *p);
     printf("%p\n", &n[0]);
     for (int i = 0; i < 3; i++)
-    printf("%d ", n[i]);
+        printf("%d ", n[i]);
     putchar('\n');
     p++;
     printf("%p\n", p);
