@@ -17,7 +17,6 @@ int main()
 {
 	//message = 4, n = 2*3=6
 	long long enc = powr(7, 5)%6;
-
 	printf("%lld..\n",enc);
 
 	long long dec = powr(enc,11)%6;
