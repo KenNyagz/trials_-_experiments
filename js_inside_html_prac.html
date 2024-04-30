@@ -1,0 +1,36 @@
+<!DOCTYPE>
+<html>
+  <head>
+    <link rel="icon" href="a1.jpg" type="image/x-icon" />
+    <style>
+      .someclass {
+         background: lime; 
+         height: 30px;
+      }
+      #login_btn {
+         margin: 15px;
+         border: solid green 3px;
+         border-radius: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class=someclass>
+      Hi there
+    </div>
+    <form id=login_form>
+      <label><b>Username</b></label><br>
+      <input type=text id=username name=username placeholder="User" required></input><br>
+      <strong>password</strong><br>
+      <input type=text id=passwd name=paswd placeholder=Password" required><br>
+      <input type=submit value="Login" id="login_btn">
+      <script>
+        document.getElementById('login_form').addEventListener('submit', async (event) => {
+          event.preventDefault();
+          const username = document.getElementById('username').value
+          alert('hi '+ username);
+        });
+      </script>
+    </form>
+  </body>
+</html>
