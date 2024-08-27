@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pagination Example</title>
+</head>
+<body>
+    <div id="content"></div>
+    <div id="pagination"></div>
+
+    <script>
+        const allItems = Array.from({ length: 100 }, (_, i) => i + 1);
+        const itemsPerPage = 10;
+        const totalPages = Math.ceil(allItems.length / itemsPerPage);
+
+        function showPage(page) {
+            const start = (page - 1) * itemsPerPage;
+            const end = start + itemsPerPage;
+            const itemsOnPage = allItems.slice(start, end);
+
+            document.getElementById('content').innerHTML = itemsOnPage.join(', ');
+        }
+
+        function createPagination() {
+            const pagination = document.getElementById('pagination');
+            for (let i = 1; i <= totalPages; i++) {
+                const button = document.createElement('button');
+                button.textContent = i;
+                button.onclick = () => showPage(i);
+                pagination.appendChild(button);
+            }
+        }
+
+        createPagination();
+        showPage(1);
+    </script>
+</body>
+</html>
+
