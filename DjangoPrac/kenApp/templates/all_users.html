@@ -1,0 +1,17 @@
+{% extends "master.html" %}
+
+{% block title %}
+  Platform Users List
+{% endblock %}
+
+{% block content %}
+  <p><a href='/'>Home</a></p>
+  <h1>Users</h1>
+
+  <ul>
+    {% for x in theUsers %}
+      <li><a href="details/{{ x.id }}">{{ x.firstName }} {{x.lastName }}</a></li>
+    {% endfor %}
+  </ul>
+
+{% endblock %}
