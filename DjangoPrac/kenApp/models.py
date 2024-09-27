@@ -1,12 +1,14 @@
 from django.db import models
-from datetime import datetime
+#from datetime import datetime
+from django.utils import timezone
 
 class User(models.Model):
     ''' '''
     firstName = models.CharField(max_length=255)
     lastName = models.CharField(max_length=255)
     phone = models.IntegerField(null=True)
-    joined = models.DateField(default=datetime.now())
+    joined = models.DateField(default=timezone.now)
+    slug = models.SlugField(default="", null=False)
 
     def __str__(self):
         '''Dunder method to overwrite how model data is displayed'''

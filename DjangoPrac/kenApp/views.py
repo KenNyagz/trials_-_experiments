@@ -15,7 +15,8 @@ def hello(request):
 
 def details(request, id):
     ''' '''
-    user = User.objects.get(id=id)
+    #user = User.objects.get(id=id)
+    user = User.objects.get(slug=slug)
     template = loader.get_template('details.html')
     context = {
         'user': user,

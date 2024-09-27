@@ -7,5 +7,6 @@ from .models import User, pet
 class UserAdmin(admin.ModelAdmin):
     ''' '''
     list_display = ('firstName', 'lastName', 'joined')
+    prepopulated_fields = {"slug": ("firstName", "lastName")}
 
 admin.site.register(User, UserAdmin)
