@@ -1,4 +1,5 @@
-<?php 
+<?php
+//php on the browser side
 $cookie_name = "Ken";
 $cookie_value = "10";
 setcookie($cookie_name, $cookie_value, time() - 3600, "/");
