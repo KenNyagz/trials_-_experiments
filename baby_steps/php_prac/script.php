@@ -1,4 +1,5 @@
 <?php
+//php as a script on the browser
 $servername = "localhost";
 $username = "ken";
 $password = "@Kennyaga";
