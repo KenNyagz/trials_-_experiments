@@ -1,0 +1,3 @@
+ - Useful website(s) for KCNA exam practice questions and answers.
+
+https://jinaldesai.com/kubernetes-and-cloud-native-associate-kcna/
