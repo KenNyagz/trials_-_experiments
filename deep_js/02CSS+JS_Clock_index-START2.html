@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>JS + CSS Clock</title>
+  <link rel="icon" href="https://fav.farm/🔥" />
+</head>
+<body>
+
+
+    <div class="clock">
+      <div class="clock-face">
+        <div class="clock-center"></div>
+        <div class="hand hour-hand"></div>
+        <div class="hand min-hand"></div>
+        <div class="hand second-hand"></div>
+      </div>
+    </div>
+
+
+  <style>
+    html {
+      background: #018DED url(https://unsplash.it/1500/1000?image=881&blur=5);
+      background-size: cover;
+      font-family: 'helvetica neue';
+      text-align: center;
+      font-size: 10px;
+    }
+
+    body {
+      margin: 0;
+      font-size: 2rem;
+      display: flex;
+      flex: 1;
+      min-height: 100vh;
+      align-items: center;
+    }
+
+    .clock {
+      width: 30rem;
+      height: 30rem;
+      border: 20px solid white;
+      border-radius: 50%;
+      margin: 50px auto;
+      position: relative;
+      padding: 2rem;
+      box-shadow:
+        0 0 0 4px rgba(0,0,0,0.1),
+        inset 0 0 0 3px #EFEFEF,
+        inset 0 0 10px black,
+        0 0 10px rgba(0,0,0,0.2);
+    }
+
+    .clock-face {
+      display: flex;
+      position: relative;
+      width: 100%;
+      height: 100%;
+      transform: translateY(-3px); /* account for the height of the clock hands */
+    }
+    .clock-center {
+      position: absolute;/* to position center at the center of the clock*/
+      width: 3px;
+      height: 3px;
+      border-radius: 50%;
+      border: 22px solid black;
+      top: 50%;/*offset the center to the bottom*/
+      left: 50%;/*offset it to the right*/
+      transform: translate(-50%, -50%);/*pulls the element back by half of its own width
+                                    and height, so its center lands exactly at the 50%/50%*/
+    }
+
+    .hand {
+      width: 50%;
+      height: 6px;
+      background: black;
+      position: absolute;
+      top: 50%;
+      transform-origin: 100%;
+      transform: rotate(90deg);/*offsetting the degrees by 90degrees clockwise since the divs*/
+                               /* are orignally horizontal(which is 270deg/-90deg*/
+      transition: all 0.05s;
+      transition-timing-function: cubic-bezier(0.2, 2.18, 0.86, -0.13);
+    }
+
+    .hour-hand {
+      height: 8px; 
+      width: 46%;
+      transform-origin: 103%;
+      margin: 1.5%;
+      padding-left: -4px;
+    }
+    .second-hand {
+      height: 3px;
+    }
+  </style>
+
+  <script>
+    function setTime() {
+      //Get the clock hands
+      const secondHand = document.querySelector('.second-hand');
+      const minuteHand = document.querySelector('.min-hand');
+      const hourHand = document.querySelector('.hour-hand');
+
+      //Get the value for seconds, minutes and hour
+      const currentDate = new Date();
+      const seconds = currentDate.getSeconds();
+      const minutes = currentDate.getMinutes();
+      const hours = currentDate.getHours();
+
+      //Calculate the degrees for each hand on the clock
+      const secondDegrees = (seconds / 60) * 360 + 90;
+      const minDegrees = (minutes / 60) * 360 + 90;
+      const hourDegrees = (hours / 12) * 360 + 90;
+
+      //Assign or manipulate the clock hands' degrees
+      //These go hand in hand with the transform CSS attibute in the .hand class divs
+      secondHand.style.transform = `rotate(${secondDegrees}deg)`;
+      minuteHand.style.transform = `rotate(${minDegrees}deg)`;
+      hourHand.style.transform = `rotate(${hourDegrees}deg)`;
+    }
+
+    setInterval(setTime, 1000);
+    setTime();
+  </script>
+</body>
+</html>
