@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: web-cli-file
+  labels:
+    app: web-cli-file
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: web-cli-file
+  template:
+    metadata:
+      labels:
+        app: web-cli-file
+    spec:
+      containers:
+      - name: nginx
+        image: nginx
+        ports:
+        - containerPort: 80
